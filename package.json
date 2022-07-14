@@ -1,5 +1,5 @@
 {
-    "name": "windy10v10ai",
+    "name": "anime10v10ai",
     "private": true,
     "scripts": {
         "postinstall": "node src/scripts/install.js",
