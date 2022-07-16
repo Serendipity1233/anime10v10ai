@@ -296,10 +296,6 @@
 	{
 		"DisableWearables" 			"1"
 	}
-	"npc_dota_hero_huskar"
-	{
-		"DisableWearables" 			"1"
-	}
 	"npc_dota_hero_invoker"
 	{
 		"DisableWearables" 			"1"
@@ -381,10 +377,6 @@
 		"DisableWearables" 			"1"
 	}
 	"npc_dota_hero_spectre"
-	{
-		"DisableWearables" 			"1"
-	}
-	"npc_dota_hero_spirit_breaker"
 	{
 		"DisableWearables" 			"1"
 	}
