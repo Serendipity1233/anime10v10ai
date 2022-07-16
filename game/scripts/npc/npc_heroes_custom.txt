@@ -232,15 +232,209 @@
 		"VoiceFile"						""
 		"GameSoundsFile"				"soundevents/game_sounds_heroes/game_sounds_saber.vsndevts"
 	}
-
+	//大屁股大招替换为旧版
+	"npc_dota_hero_abyssal_underlord"
+	{
+		"Ability6"		"abyssal_underlord_dark_rift"
+	}
+    //=================================================================================================================
+	// HERO Anime模型饰品消除
+	//=================================================================================================================
+    "npc_dota_hero_ancient_apparition"
+	{
+		"DisableWearables" 			"1"
+	}
+	"npc_dota_hero_batrider"
+	{
+		"DisableWearables" 			"1"
+	}
+	"npc_dota_hero_clinkz"
+	{
+		"DisableWearables" 			"1"
+	}
+	"npc_dota_hero_dark_willow"
+	{
+		"DisableWearables" 			"1"
+	}
+	"npc_dota_hero_dawnbreaker"
+	{
+		"DisableWearables" 			"1"
+	}
+	"npc_dota_hero_disruptor"
+	{
+		"DisableWearables" 			"1"
+	}
+	"npc_dota_hero_doom_bringer"
+	{
+		"DisableWearables" 			"1"
+	}
+	"npc_dota_hero_earth_spirit"
+	{
+		"DisableWearables" 			"1"
+	}
+	"npc_dota_hero_ember_spirit"
+	{
+		"DisableWearables" 			"1"
+	}
+	"npc_dota_hero_enchantress"
+	{
+		"DisableWearables" 			"1"
+	}
+	"npc_dota_hero_faceless_void"
+	{
+		"DisableWearables" 			"1"
+	}
+	"npc_dota_hero_grimstroke"
+	{
+		"DisableWearables" 			"1"
+	}
+	"npc_dota_hero_gyrocopter"
+	{
+		"DisableWearables" 			"1"
+	}
+	"npc_dota_hero_hoodwink"
+	{
+		"DisableWearables" 			"1"
+	}
+	"npc_dota_hero_huskar"
+	{
+		"DisableWearables" 			"1"
+	}
+	"npc_dota_hero_invoker"
+	{
+		"DisableWearables" 			"1"
+	}
+	"npc_dota_hero_keeper_of_the_light"
+	{
+		"DisableWearables" 			"1"
+	}
+	"npc_dota_hero_legion_commander"
+	{
+		"DisableWearables" 			"1"
+	}
+	"npc_dota_hero_life_stealer"
+	{
+		"DisableWearables" 			"1"
+	}
+	"npc_dota_hero_lone_druid"
+	{
+		"DisableWearables" 			"1"
+	}
+	"npc_dota_hero_magnataur"
+	{
+		"DisableWearables" 			"1"
+	}
+	"npc_dota_hero_mars"
+	{
+		"DisableWearables" 			"1"
+	}
+	"npc_dota_hero_morphling"
+	{
+		"DisableWearables" 			"1"
+	}
+	"npc_dota_hero_naga_siren"
+	{
+		"DisableWearables" 			"1"
+	}
+	"npc_dota_hero_night_stalker"
+	{
+		"DisableWearables" 			"1"
+	}
+	"npc_dota_hero_obsidian_destroyer"
+	{
+		"DisableWearables" 			"1"
+	}
+	"npc_dota_hero_phantom_lancer"
+	{
+		"DisableWearables" 			"1"
+	}
+	"npc_dota_hero_phoenix"
+	{
+		"DisableWearables" 			"1"
+	}
+	"npc_dota_hero_puck"
+	{
+		"DisableWearables" 			"1"
+	}
+	"npc_dota_hero_pugna"
+	{
+		"DisableWearables" 			"1"
+	}
+	"npc_dota_hero_queenofpain"
+	{
+		"DisableWearables" 			"1"
+	}
+	"npc_dota_hero_shredder"
+	{
+		"DisableWearables" 			"1"
+	}
+	"npc_dota_hero_slardar"
+	{
+		"DisableWearables" 			"1"
+	}
+	"npc_dota_hero_slark"
+	{
+		"DisableWearables" 			"1"
+	}
+	"npc_dota_hero_snapfire"
+	{
+		"DisableWearables" 			"1"
+	}
+	"npc_dota_hero_spectre"
+	{
+		"DisableWearables" 			"1"
+	}
+	"npc_dota_hero_spirit_breaker"
+	{
+		"DisableWearables" 			"1"
+	}
 	"npc_dota_hero_techies"
 	{
 		"DisableWearables" 			"1"
 	}
-
-	"npc_dota_hero_abyssal_underlord"
+	"npc_dota_hero_templar_assassin"
 	{
-		"Ability6"		"abyssal_underlord_dark_rift"
+		"DisableWearables" 			"1"
+	}
+	"npc_dota_hero_terrorblade"
+	{
+		"DisableWearables" 			"1"
+	}
+	"npc_dota_hero_tinker"
+	{
+		"DisableWearables" 			"1"
+	}
+	"npc_dota_hero_treant"
+	{
+		"DisableWearables" 			"1"
+	}
+	"npc_dota_hero_troll_warlord"
+	{
+		"DisableWearables" 			"1"
+	}
+	"npc_dota_hero_tusk"
+	{
+		"DisableWearables" 			"1"
+	}
+	"npc_dota_hero_ursa"
+	{
+		"DisableWearables" 			"1"
+	}
+	"npc_dota_hero_venomancer"
+	{
+		"DisableWearables" 			"1"
+	}
+	"npc_dota_hero_void_spirit"
+	{
+		"DisableWearables" 			"1"
+	}
+	"npc_dota_hero_weaver"
+	{
+		"DisableWearables" 			"1"
+	}
+	"npc_dota_hero_wisp"
+	{
+		"DisableWearables" 			"1"
 	}
 
 	//=================================================================================================================
@@ -248,6 +442,7 @@
 	//=================================================================================================================
 	"npc_dota_hero_abaddon"
 	{
+		"DisableWearables" 			"1"
 		"Bot"
 		{
 			"Build"
@@ -343,6 +538,7 @@
 	}
 	"npc_dota_hero_axe"
 	{
+		"DisableWearables" 			"1"
 		"Bot"
 		{
 			"Build"
@@ -389,6 +585,7 @@
 	}
 	"npc_dota_hero_bane"
 	{
+		"DisableWearables" 			"1"
 		"Bot"
 		{
 			"Build"
@@ -435,6 +632,7 @@
 	}
 	"npc_dota_hero_bounty_hunter"
 	{
+		"DisableWearables" 			"1"
 		"Bot"
 		{
 			"Build"
@@ -481,6 +679,7 @@
 	}
 	"npc_dota_hero_bloodseeker"
 	{
+		"DisableWearables" 			"1"
 		"Ability16"		"special_bonus_cleave_100"
 		"Bot"
 		{
@@ -571,6 +770,7 @@
 	}
 	"npc_dota_hero_chaos_knight"
 	{
+		"DisableWearables" 			"1"
 		"Bot"
 		{
 			"Build"
@@ -617,6 +817,7 @@
 	}
 	"npc_dota_hero_crystal_maiden"
 	{
+		"DisableWearables" 			"1"
 		"Bot"
 		{
 			"Build"
@@ -663,6 +864,7 @@
 	}
 	"npc_dota_hero_dazzle"
 	{
+		"DisableWearables" 			"1"
 		"Bot"
 		{
 			"Build"
@@ -708,6 +910,7 @@
 	}
 	"npc_dota_hero_death_prophet"
 	{
+		"DisableWearables" 			"1"
 		"Bot"
 		{
 			"Build"
@@ -751,6 +954,7 @@
 	}
 	"npc_dota_hero_dragon_knight"
 	{
+		"DisableWearables" 			"1"
 		"Bot"
 		{
 			"Build"
@@ -795,6 +999,7 @@
 	}
 	"npc_dota_hero_drow_ranger"
 	{
+		"DisableWearables" 			"1"
 		"Bot"
 		{
 			"Build"
@@ -840,6 +1045,7 @@
 	}
 	"npc_dota_hero_earthshaker"
 	{
+		"DisableWearables" 			"1"
 		"Bot"
 		{
 			"Build"
@@ -886,6 +1092,7 @@
 	}
 	"npc_dota_hero_furion"
 	{
+		"DisableWearables" 			"1"
 		"Bot"
 		{
 			"Build"
@@ -929,6 +1136,7 @@
 	}
 	"npc_dota_hero_huskar"
 	{
+		"DisableWearables" 			"1"
 		"Bot"
 		{
 			"Build"
@@ -975,6 +1183,7 @@
 	}
 	"npc_dota_hero_jakiro"
 	{
+		"DisableWearables" 			"1"
 		"Bot"
 		{
 			"Build"
@@ -1067,6 +1276,7 @@
 	}
 	"npc_dota_hero_kunkka"
 	{
+		"DisableWearables" 			"1"
 		"Bot"
 		{
 			"Build"
@@ -1113,6 +1323,7 @@
 	}
 	"npc_dota_hero_lich"
 	{
+		"DisableWearables" 			"1"
 		"Bot"
 		{
 			"Build"
@@ -1159,6 +1370,7 @@
 	}
 	"npc_dota_hero_lina"
 	{
+		"DisableWearables" 			"1"
 		"Bot"
 		{
 			"Build"
@@ -1205,6 +1417,7 @@
 	}
 	"npc_dota_hero_lion"
 	{
+		"DisableWearables" 			"1"
 		"Bot"
 		{
 			"Build"
@@ -1343,6 +1556,7 @@
 	}
 	"npc_dota_hero_mirana"
 	{
+		"DisableWearables" 			"1"
 		"Bot"
 		{
 			"Build"
@@ -1391,6 +1605,7 @@
 	}
 	"npc_dota_hero_nevermore"
 	{
+		"DisableWearables" 			"1"
 		"Bot"
 		{
 			"Build"
@@ -1439,6 +1654,7 @@
 	}
 	"npc_dota_hero_necrolyte"
 	{
+		"DisableWearables" 			"1"
 		"Bot"
 		{
 			"Build"
@@ -1533,6 +1749,7 @@
 	}
 	"npc_dota_hero_omniknight"
 	{
+		"DisableWearables" 			"1"
 		"Bot"
 		{
 			"Build"
@@ -1578,6 +1795,7 @@
 	}
 	"npc_dota_hero_oracle"
 	{
+		"DisableWearables" 			"1"
 		"Bot"
 		{
 			"Build"
@@ -1623,6 +1841,7 @@
 	}
 	"npc_dota_hero_phantom_assassin"
 	{
+		"DisableWearables" 			"1"
 		"Bot"
 		{
 			"Build"
@@ -1668,6 +1887,7 @@
 	}
 	"npc_dota_hero_pudge"
 	{
+		"DisableWearables" 			"1"
 		"Bot"
 		{
 			"Build"
@@ -1713,6 +1933,7 @@
 	}
 	"npc_dota_hero_razor"
 	{
+		"DisableWearables" 			"1"
 		"Bot"
 		{
 			"Build"
@@ -1752,6 +1973,7 @@
 	}
 	"npc_dota_hero_riki"
 	{
+		"DisableWearables" 			"1"
 		"Bot"
 		{
 			"Build"
@@ -1841,6 +2063,7 @@
 	}
 	"npc_dota_hero_shadow_shaman"
 	{
+		"DisableWearables" 			"1"
 		"Bot"
 		{
 			"Build"
@@ -1883,6 +2106,7 @@
 	}
 	"npc_dota_hero_silencer"
 	{
+		"DisableWearables" 			"1"
 		"override_hero"		"npc_dota_hero_silencer"
 		"AttackRange"		"600"					// 600
 		"AttributeStrengthGain"		"2.000000"		// 2.4
@@ -1931,6 +2155,7 @@
 	}
 	"npc_dota_hero_skeleton_king"
 	{
+		"DisableWearables" 			"1"
 		"Bot"
 		{
 			"Build"
@@ -1976,6 +2201,7 @@
 	}
 	"npc_dota_hero_skywrath_mage"
 	{
+		"DisableWearables" 			"1"
 		"AttributeBaseIntelligence"		"28"		// 25
 		"AttributeIntelligenceGain"		"3.800000"	// 4.1
 		"Bot"
@@ -2024,6 +2250,7 @@
 	}
 	"npc_dota_hero_sniper"
 	{
+		"DisableWearables" 			"1"
 		"Ability5"		"sniper_assassinate_upgrade"
 		"Bot"
 		{
@@ -2073,6 +2300,7 @@
 	}
 	"npc_dota_hero_spirit_breaker"
 	{
+		"DisableWearables" 			"1"
 		"Bot"
 		{
 			"Build"
@@ -2118,6 +2346,7 @@
 	}
 	"npc_dota_hero_sven"
 	{
+		"DisableWearables" 			"1"
 		"Bot"
 		{
 			"Build"
@@ -2212,6 +2441,7 @@
 	}
 	"npc_dota_hero_tidehunter"
 	{
+		"DisableWearables" 			"1"
 		"Bot"
 		{
 			"Build"
@@ -2259,6 +2489,7 @@
 	}
 	"npc_dota_hero_vengefulspirit"
 	{
+		"DisableWearables" 			"1"
 		"Bot"
 		{
 			"Build"
@@ -2304,6 +2535,7 @@
 	}
 	"npc_dota_hero_viper"
 	{
+		"DisableWearables" 			"1"
 		"Bot"
 		{
 			"Build"
@@ -2349,6 +2581,7 @@
 	}
 	"npc_dota_hero_windrunner"
 	{
+		"DisableWearables" 			"1"
 		"Bot"
 		{
 			"Build"
@@ -2436,6 +2669,7 @@
 	}
 	"npc_dota_hero_witch_doctor"
 	{
+		"DisableWearables" 			"1"
 		"Bot"
 		{
 			"Build"
@@ -2483,6 +2717,7 @@
 	}
 	"npc_dota_hero_zuus"
 	{
+		"DisableWearables" 			"1"
 		"Bot"
 		{
 			"Build"
