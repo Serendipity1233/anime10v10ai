@@ -424,6 +424,10 @@
 	{
 		"DisableWearables" 			"1"
 	}
+	"npc_dota_hero_winter_wyvern"
+	{
+		"DisableWearables" 			"1"
+	}
 	"npc_dota_hero_wisp"
 	{
 		"DisableWearables" 			"1"
