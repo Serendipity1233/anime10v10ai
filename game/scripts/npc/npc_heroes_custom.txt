@@ -240,11 +240,19 @@
     //=================================================================================================================
 	// HERO Anime模型饰品消除
 	//=================================================================================================================
+	"npc_dota_hero_antimage"
+	{
+		"DisableWearables" 			"1"
+	}
     "npc_dota_hero_ancient_apparition"
 	{
 		"DisableWearables" 			"1"
 	}
 	"npc_dota_hero_batrider"
+	{
+		"DisableWearables" 			"1"
+	}
+	"npc_dota_hero_beastmaster"
 	{
 		"DisableWearables" 			"1"
 	}
@@ -337,6 +345,10 @@
 		"DisableWearables" 			"1"
 	}
 	"npc_dota_hero_obsidian_destroyer"
+	{
+		"DisableWearables" 			"1"
+	}
+	"npc_dota_hero_pangolier"
 	{
 		"DisableWearables" 			"1"
 	}

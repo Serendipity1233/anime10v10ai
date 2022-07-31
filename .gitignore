@@ -23,15 +23,14 @@ panorama/images/custom_game/golden_crown.vxml_c
 panorama/images/custom_game/golden_crown_grey_png.vtex_c
 panorama/images/custom_game/golden_crown_grey.vxml_c
 
-game/models/heroes/
-game/materials/heroes/
+game/models/
+game/materials/
+game/particles/
 
 game/panorama/images/heroes/
 game/panorama/images/spellicons/
 game/panorama/videos/heroes/
-game/particles/units/heroes/
 game/soundevents/voscripts/
 game/sounds/vo/
-game/materials/models/items/
 
 game/sounds/
