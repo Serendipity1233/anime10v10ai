@@ -500,12 +500,13 @@ tBotItemData.purchaseItemList = {
 		'item_power_treads',
 		'item_orb_of_corrosion',
 		'item_falcon_blade',
-		'item_bfury',
 		'item_aghanims_shard',
+		'item_bfury',
+		'item_echo_sabre',
+		'item_wings_of_haste',
 		'item_ultimate_scepter',
 		'item_recipe_ultimate_scepter_2',
-		'item_echo_sabre',
-		'item_sange_and_yasha',
+		'item_yasha_and_kaya',
 		'item_black_king_bar_2',
 		'item_infernal_desolator',
 		'item_wasp_callous',
@@ -1197,7 +1198,7 @@ tBotItemData.sellItemList = {
 		'item_power_treads',
 		'item_echo_sabre_2',
 		'item_bfury',
-		'item_sange_and_yasha',
+		'item_yasha_and_kaya',
 	},
 	npc_dota_hero_mirana = {
 		'item_force_staff',
@@ -1414,6 +1415,7 @@ tBotItemData.wardHeroList = Set {
 	'npc_dota_hero_warlock',
 	'npc_dota_hero_ogre_magi',
 	'npc_dota_hero_oracle',
+	'npc_dota_hero_shadow_shaman',
 }
 
 tBotItemData.wardObserverPostionList = {
@@ -1581,7 +1583,7 @@ tBotItemData.addNeutralItemList = {
 		'item_ballista',
 	},
 	npc_dota_hero_meepo = {
-		'item_desolator_2',
+		'item_minotaur_horn',
 	},
 	npc_dota_hero_mirana = {
 		'item_ballista',
