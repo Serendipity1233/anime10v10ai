@@ -177,6 +177,18 @@ local j3e9SteamAccountID = Set {
 	-- 爱发电用户_J3e9
 	887874899,
 }
+local xinSteamAccountID = Set {
+	-- 新
+	171217775,
+}
+local qiannianSteamAccountID = Set {
+	-- 千年破晓
+	120921523,
+}
+local feijiSteamAccountID = Set {
+	-- 爱发电用户_htSB/QQ飞机
+	213346065,
+}
 -- 称号属性 END
 
 function AIGameMode:ArrayShuffle(array)
@@ -759,6 +771,18 @@ function AIGameMode:OnNPCSpawned(keys)
 			if j3e9SteamAccountID[steamAccountID] then
 				LinkLuaModifier("modifier_j3e9", "modifiers/player/modifier_j3e9", LUA_MODIFIER_MOTION_NONE)
 				hEntity:AddNewModifier(hEntity, nil, "modifier_j3e9", {})
+			end
+			if xinSteamAccountID[steamAccountID] then
+				LinkLuaModifier("modifier_xin", "modifiers/player/modifier_xin", LUA_MODIFIER_MOTION_NONE)
+				hEntity:AddNewModifier(hEntity, nil, "modifier_xin", {})
+			end
+			if qiannianSteamAccountID[steamAccountID] then
+				LinkLuaModifier("modifier_qiannian", "modifiers/player/modifier_qiannian", LUA_MODIFIER_MOTION_NONE)
+				hEntity:AddNewModifier(hEntity, nil, "modifier_qiannian", {})
+			end
+			if feijiSteamAccountID[steamAccountID] then
+				LinkLuaModifier("modifier_feiji", "modifiers/player/modifier_feiji", LUA_MODIFIER_MOTION_NONE)
+				hEntity:AddNewModifier(hEntity, nil, "modifier_feiji", {})
 			end
 
 
