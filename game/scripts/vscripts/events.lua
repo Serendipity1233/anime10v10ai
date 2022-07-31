@@ -1,13 +1,27 @@
 local tBotNameList = {
-	--"npc_dota_hero_abaddon", // 不会放技能，只会物品和A人
+	--"npc_dota_hero_invoker",
 	--"npc_dota_hero_antimage", // 不会放技能，只会物品和A人
 	--"npc_dota_hero_spirit_breaker", // 不会放技能，只会物品和A人
 	--"npc_dota_hero_silencer", // 不会放技能，只会物品和A人
 	--"npc_dota_hero_mirana", // 不会放技能，只会物品和A人
 	--"npc_dota_hero_medusa", // 不会放技能，只会物品和A人
 	--"npc_dota_hero_furion", // 不会放技能，只会物品和A人
-	--"npc_dota_hero_shadow_shaman", // 不会放技能，只会物品和A人
 	--"npc_dota_hero_huskar", // 不会放技能，只会物品和A人
+	--"npc_dota_hero_batrider",
+	--"npc_dota_hero_obsidian_destroyer",
+	--"npc_dota_hero_enchantress",
+	--"npc_dota_hero_snapfire",
+	--"npc_dota_hero_broodmother",
+	--"npc_dota_hero_lycan",
+	--"npc_dota_hero_arc_warden",
+	--"npc_dota_hero_ancient_apparition",
+	--"npc_dota_hero_treant",
+	--"npc_dota_hero_rubick",
+	--"npc_dota_hero_shredder",
+	--"npc_dota_hero_tinker",
+	"npc_dota_hero_abaddon",-- 不会放技能，只会物品和A人
+	"npc_dota_hero_meepo",-- 不会放技能，只会物品和A人
+	"npc_dota_hero_shadow_shaman",-- 不会放技能，只会物品和A人
 	"npc_dota_hero_axe",
 	"npc_dota_hero_bane",
 	"npc_dota_hero_bounty_hunter",
@@ -552,11 +566,11 @@ function HeroKilled(keys)
 	local hHero = EntIndexToHScript(keys.entindex_killed)
 	local fRespawnTime = 0
 	local iLevel = hHero:GetLevel()
-	local tDOTARespawnTime = {4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 60}
-	if iLevel <= 40 then
+	local tDOTARespawnTime = {4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 65, 66, 66, 67, 67, 68, 68, 69, 69, 70, 70}
+	if iLevel <= 50 then
 		fRespawnTime = math.ceil(tDOTARespawnTime[iLevel]*AIGameMode.iRespawnTimePercentage/100.0)
 	else
-		fRespawnTime = math.ceil((iLevel/4 + 50)*AIGameMode.iRespawnTimePercentage/100.0)
+		fRespawnTime = math.ceil((iLevel/4 + 58)*AIGameMode.iRespawnTimePercentage/100.0)
 	end
 
 	if hHero:FindModifierByName('modifier_necrolyte_reapers_scythe') then
