@@ -21,9 +21,7 @@ local tBotNameList = {
 	--"npc_dota_hero_rubick",
 	--"npc_dota_hero_shredder",
 	--"npc_dota_hero_tinker",
-	"npc_dota_hero_meepo",-- 不会放技能，只会物品和A人
-	"npc_dota_hero_abaddon",-- 不会放技能，只会物品和A人
-	"npc_dota_hero_shadow_shaman",-- 不会放技能，只会物品和A人
+	"npc_dota_hero_abaddon",
 	"npc_dota_hero_axe",
 	"npc_dota_hero_bane",
 	"npc_dota_hero_bounty_hunter",
@@ -43,6 +41,7 @@ local tBotNameList = {
 	"npc_dota_hero_lina",
 	"npc_dota_hero_lion",
 	"npc_dota_hero_luna",
+	"npc_dota_hero_meepo",
 	"npc_dota_hero_nevermore",
 	"npc_dota_hero_necrolyte",
 	"npc_dota_hero_ogre_magi",
@@ -53,6 +52,7 @@ local tBotNameList = {
 	"npc_dota_hero_riki",
 	--"npc_dota_hero_razor", // 在泉水站着完全不动
 	"npc_dota_hero_sand_king",
+	"npc_dota_hero_shadow_shaman",
 	"npc_dota_hero_skywrath_mage",
 	"npc_dota_hero_sniper",
 	"npc_dota_hero_sven",
@@ -84,6 +84,11 @@ local tAPLevelList = {
 	24,
 	26,
 }
+
+local tDOTARespawnTime = {4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 75}
+
+local qiliuSteamAccountID = {}
+qiliuSteamAccountID[353885092]="76岁靠谱成年男性"
 
 -- 测试密码
 local developerSteamAccountID = {}
@@ -119,22 +124,56 @@ function AIGameMode:GetFreeHeroName()
 end
 
 
-function AIGameMode:InitHumanPlayerListAndSetHumanStartGold()
+function AIGameMode:InitHeroSelection()
 	if self.PreGameOptionsSet then
 		print("[AIGameMode] InitSettings")
+		-- 初始化玩家列表和初期金钱
 		self.tHumanPlayerList = {}
+		self.tIfChangeHeroList = {}
 		for i=0, (DOTA_MAX_TEAM_PLAYERS - 1) do
-			if PlayerResource:IsValidPlayer(i) then
+			if PlayerResource:GetConnectionState(i) ~= DOTA_CONNECTION_STATE_UNKNOWN then
 				-- set human player list
 				self.tHumanPlayerList[i] = true
+				-- 是否更换了会员英雄
+				self.tIfChangeHeroList[i] = false
 				-- set start gold
 				PlayerResource:SetGold(i, (self.iStartingGoldPlayer-600),true)
+			end
+		end
+
+		-- 添加bot和初期金钱
+		local iPlayerNumRadiant = PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_GOODGUYS)
+		local iPlayerNumDire = PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_BADGUYS)
+		math.randomseed(math.floor(Time()*1000000))
+		-- 随机英雄列表
+		if not self.DebugMode then
+			print("[AIGameMode] Random hero list")
+			self:ArrayShuffle(tBotNameList)
+		end
+		local sDifficulty = "unfair"
+		if self.iDesiredRadiant > iPlayerNumRadiant then
+			for i = 1, self.iDesiredRadiant - iPlayerNumRadiant do
+				Tutorial:AddBot(self:GetFreeHeroName(), "", sDifficulty, true)
+			end
+		end
+		if self.iDesiredDire > iPlayerNumDire then
+			for i = 1, self.iDesiredDire - iPlayerNumDire do
+				Tutorial:AddBot(self:GetFreeHeroName(), "", sDifficulty, false)
+			end
+		end
+		GameRules:GetGameModeEntity():SetBotThinkingEnabled(true)
+		Tutorial:StartTutorialMode()
+		for i=0, (DOTA_MAX_TEAM_PLAYERS - 1) do
+			if PlayerResource:IsValidPlayer(i) then
+				if not self.tHumanPlayerList[i] then
+					PlayerResource:SetGold(i, (self.iStartingGoldBot-600),true)
+				end
 			end
 		end
 	else
 		Timers:CreateTimer(0.5, function ()
 			print("[AIGameMode] Try InitSettings in 0.5s")
-			AIGameMode:InitHumanPlayerListAndSetHumanStartGold()
+			AIGameMode:InitHeroSelection()
 		end)
 	end
 end
@@ -148,7 +187,7 @@ function AIGameMode:OnGameStateChanged(keys)
 		end
 	elseif state == DOTA_GAMERULES_STATE_HERO_SELECTION then
 		if IsServer() then
-			self:InitHumanPlayerListAndSetHumanStartGold()
+			self:InitHeroSelection()
 		end
 	elseif state == DOTA_GAMERULES_STATE_STRATEGY_TIME then
 		if not self.PreGameOptionsSet then
@@ -163,39 +202,6 @@ function AIGameMode:OnGameStateChanged(keys)
 			end
 		end
 
-		-- Eanble bots and fill empty slots
-		if IsServer() == true then
-			local iPlayerNumRadiant = PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_GOODGUYS)
-			local iPlayerNumDire = PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_BADGUYS)
-			math.randomseed(math.floor(Time()*1000000))
-			-- 随机英雄列表
-			if not self.DebugMode then
-				print("[AIGameMode] Random hero list")
-				self:ArrayShuffle(tBotNameList)
-			end
-			local sDifficulty = "unfair"
-			if self.iDesiredRadiant > iPlayerNumRadiant then
-				for i = 1, self.iDesiredRadiant - iPlayerNumRadiant do
-					Tutorial:AddBot(self:GetFreeHeroName(), "", sDifficulty, true)
-				end
-			end
-			if self.iDesiredDire > iPlayerNumDire then
-				for i = 1, self.iDesiredDire - iPlayerNumDire do
-					Tutorial:AddBot(self:GetFreeHeroName(), "", sDifficulty, false)
-				end
-			end
-			GameRules:GetGameModeEntity():SetBotThinkingEnabled(true)
-			Tutorial:StartTutorialMode()
-
-			-- set bot start gold
-			for i=0, (DOTA_MAX_TEAM_PLAYERS - 1) do
-				if PlayerResource:IsValidPlayer(i) then
-					if not self.tHumanPlayerList[i] then
-						PlayerResource:SetGold(i, (self.iStartingGoldBot-600),true)
-					end
-				end
-			end
-		end
 		Timers:CreateTimer(1, function ()
 			self:EndScreenStats(true, false)
 		end)
@@ -326,12 +332,12 @@ function AIGameMode:RefreshGameStatus()
 	buffLevelMegaGood = buffLevelMegaGood + AIGameMode.creepBuffLevel
 	buffLevelMegaBad = buffLevelMegaBad + AIGameMode.creepBuffLevel
 
-	if (GameTime >= (60 * 60)) then
+	if (GameTime >= (50 * 60)) then
 		buffLevelGood = buffLevelGood + 5
 		buffLevelBad = buffLevelBad + 5
 		buffLevelMegaGood = buffLevelMegaGood + 5
 		buffLevelMegaBad = buffLevelMegaBad + 5
-	elseif (GameTime >= (50 * 60)) then
+	elseif (GameTime >= (45 * 60)) then
 		buffLevelGood = buffLevelGood + 4
 		buffLevelBad = buffLevelBad + 4
 		buffLevelMegaGood = buffLevelMegaGood + 4
@@ -341,16 +347,19 @@ function AIGameMode:RefreshGameStatus()
 		buffLevelBad = buffLevelBad + 3
 		buffLevelMegaGood = buffLevelMegaGood + 3
 		buffLevelMegaBad = buffLevelMegaBad + 3
-	elseif (GameTime >= (30 * 60)) then
+	elseif (GameTime >= (35 * 60)) then
 		buffLevelGood = buffLevelGood + 2
 		buffLevelBad = buffLevelBad + 2
 		buffLevelMegaGood = buffLevelMegaGood + 2
 		buffLevelMegaBad = buffLevelMegaBad + 2
-	elseif (GameTime >= (20 * 60)) then
+	elseif (GameTime >= (30 * 60)) then
 		buffLevelGood = buffLevelGood + 1
 		buffLevelBad = buffLevelBad + 1
 		buffLevelMegaGood = buffLevelMegaGood + 1
 		buffLevelMegaBad = buffLevelMegaBad + 1
+	elseif (GameTime >= (20 * 60)) then
+		buffLevelGood = buffLevelGood + 1
+		buffLevelBad = buffLevelBad + 1
 	end
 
 	-- 未推掉任何塔时，不设置小兵buff
@@ -443,7 +452,7 @@ function RecordTowerKilled(hEntity)
 					if string.find(fort:GetUnitName(), "npc_dota_goodguys_fort") then
 						local towerSplitShot = fort:AddAbility("tower_split_shot")
 						if towerSplitShot then
-							towerSplitShot:SetLevel(2)
+							towerSplitShot:SetLevel(3)
 							towerSplitShot:ToggleAbility()
 						end
 					end
@@ -490,11 +499,10 @@ function HeroKilled(keys)
 	local hHero = EntIndexToHScript(keys.entindex_killed)
 	local fRespawnTime = 0
 	local iLevel = hHero:GetLevel()
-	local tDOTARespawnTime = {4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 65, 66, 66, 67, 67, 68, 68, 69, 69, 70, 70}
 	if iLevel <= 50 then
 		fRespawnTime = math.ceil(tDOTARespawnTime[iLevel]*AIGameMode.iRespawnTimePercentage/100.0)
 	else
-		fRespawnTime = math.ceil((iLevel/4 + 58)*AIGameMode.iRespawnTimePercentage/100.0)
+		fRespawnTime = math.ceil((iLevel/4 + 62)*AIGameMode.iRespawnTimePercentage/100.0)
 	end
 
 	if hHero:FindModifierByName('modifier_necrolyte_reapers_scythe') then
@@ -619,6 +627,11 @@ function AIGameMode:OnNPCSpawned(keys)
 			SniperInit(hEntity, self)
 		end
 
+		-- choose item 玩家抽选物品
+		if self.tHumanPlayerList[hEntity:GetPlayerOwnerID()] then
+			self:SpecialItemAdd(hEntity)
+		end
+
 		-- Bots modifier 机器人AI脚本
 		if not self.tHumanPlayerList[hEntity:GetPlayerOwnerID()] then
 			if not hEntity:HasModifier("modifier_bot_think_strategy") then
@@ -632,7 +645,7 @@ function AIGameMode:OnNPCSpawned(keys)
 					hEntity:AddNewModifier(hEntity, nil, "modifier_bot_think_ward", {})
 				end
 			end
-			hEntity:SetControllableByPlayer(-1, true)
+			-- hEntity:SetControllableByPlayer(-1, true)
 		end
 
 		-- Player Buff
@@ -728,6 +741,20 @@ function AIGameMode:OnGameOptionChange(keys)
 	CustomNetTables:SetTableValue('game_options_table', 'game_option', GameRules.GameOption)
 end
 
+function AIGameMode:SetUnitShareMask(data)
+	local toPlayerID = data.toPlayerID;
+	if PlayerResource:IsValidPlayerID(toPlayerID) then
+		local playerId = data.PlayerID;
+		-- flag: bitmask; 1 shares heroes, 2 shares units, 4 disables help
+		local flag = data.flag;
+		local disable = data.disable == 1
+		PlayerResource:SetUnitShareMaskForPlayer(playerId, toPlayerID, flag, disable)
+
+		local disableHelp = CustomNetTables:GetTableValue("disable_help", tostring(playerId)) or {}
+		disableHelp[tostring(to)] = disable
+		CustomNetTables:SetTableValue("disable_help", tostring(playerId), disableHelp)
+	end
+end
 
 function AIGameMode:OnPlayerChat( event )
 	local iPlayerID = event.playerid
@@ -791,8 +818,28 @@ function AIGameMode:OnPlayerChat( event )
 			pszHeroClass = "npc_dota_hero_chen"
 		end
 		if pszHeroClass ~= nil then
+			if self.tIfChangeHeroList[iPlayerID] then return end
+			self.tIfChangeHeroList[iPlayerID] = true
 			local hHero = PlayerResource:GetSelectedHeroEntity(iPlayerID)
 			PlayerResource:ReplaceHeroWith(iPlayerID, pszHeroClass, hHero:GetGold(), hHero:GetCurrentXP())
+			return
+		end
+	end
+	if qiliuSteamAccountID[steamAccountID] then
+		local pszHeroClass
+		if sChatMsg:find( '-远古是我爹' ) then
+			pszHeroClass = "npc_dota_hero_clinkz"
+		end
+		if pszHeroClass ~= nil then
+			if self.tIfChangeHeroList[iPlayerID] then return end
+			self.tIfChangeHeroList[iPlayerID] = true
+			local hHero = PlayerResource:GetSelectedHeroEntity(iPlayerID)
+			PlayerResource:ReplaceHeroWith(iPlayerID, pszHeroClass, hHero:GetGold(), hHero:GetCurrentXP())
+			GameRules:SendCustomMessage(
+				"号外号外！"..qiliuSteamAccountID[steamAccountID].."这个吊毛又要玩小骷髅啦，大家快去抢他远古",
+				DOTA_TEAM_GOODGUYS,
+				0
+			)
 			return
 		end
 	end
@@ -805,6 +852,8 @@ function AIGameMode:OnPlayerChat( event )
 			pszHeroClass = "npc_dota_hero_chen"
 		end
 		if pszHeroClass ~= nil then
+			if self.tIfChangeHeroList[iPlayerID] then return end
+			self.tIfChangeHeroList[iPlayerID] = true
 			local hHero = PlayerResource:GetSelectedHeroEntity(iPlayerID)
 			PlayerResource:ReplaceHeroWith(iPlayerID, pszHeroClass, hHero:GetGold(), hHero:GetCurrentXP())
 			return
@@ -812,6 +861,43 @@ function AIGameMode:OnPlayerChat( event )
 	end
 end
 
+function AIGameMode:OnPlayerReconnect(keys)
+	local playerID = keys.PlayerID
+	local new_state = GameRules:State_Get()
+	if new_state > DOTA_GAMERULES_STATE_HERO_SELECTION then
+		if PlayerResource:IsValidPlayer(playerID) then
+			if PlayerResource:HasSelectedHero(playerID) or PlayerResource:HasRandomed(playerID) then
+				-- This playerID already had a hero before disconnect
+			else
+				if not PlayerResource:IsBroadcaster(playerID) then
+					local hPlayer = PlayerResource:GetPlayer(playerID)
+					hPlayer:MakeRandomHeroSelection()
+					PlayerResource:SetHasRandomed(playerID)
+
+					if new_state > DOTA_GAMERULES_STATE_WAIT_FOR_MAP_TO_LOAD then
+						local hHero = PlayerResource:GetSelectedHeroEntity(playerID)
+						if hHero then
+							print("hHero:RemoveSelf()")
+							hHero:RemoveSelf()
+						end
+						local pszHeroClass = PlayerResource:GetSelectedHeroName(playerID)
+						local hTeam = PlayerResource:GetTeam(playerID)
+						local vPositions = nil
+						if hTeam == DOTA_TEAM_GOODGUYS then
+							vPositions = Vector(-6900,-6400,384)
+						else
+							vPositions = Vector(7000,6150,384)
+						end
+						local hHero = CreateUnitByName(pszHeroClass, vPositions, true, nil, nil, hTeam)
+						hHero:SetControllableByPlayer(playerID, true)
+						hPlayer:SetAssignedHeroEntity(hHero)
+						hPlayer:SpawnCourierAtPosition(vPositions)
+					end
+				end
+			end
+		end
+	end
+end
 
 function AIGameMode:EndScreenStats(isWinner, bTrueEnd)
     local time = GameRules:GetDOTATime(false, true)

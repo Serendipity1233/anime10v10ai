@@ -14,10 +14,16 @@ end
 
 function item_orb_of_the_brine:OnSpellStart()
 	if IsServer() then
-		self.bubble_duration = self:GetSpecialValueFor( "bubble_duration" )
+		local target = self:GetCursorTarget()
+		local caster = self:GetCaster()
+		if PlayerResource:IsDisableHelpSetForPlayerID(target:GetPlayerOwnerID(), caster:GetPlayerOwnerID()) then
+			self:EndCooldown()
+			self:RefundManaCost()
+			return false
+		end
 
-		local hTarget = self:GetCursorTarget()
-		hTarget:AddNewModifier( self:GetCaster(), self, "modifier_item_orb_of_the_brine_bubble", { duration = self.bubble_duration } )
+		self.bubble_duration = self:GetSpecialValueFor( "bubble_duration" )
+		target:AddNewModifier( self:GetCaster(), self, "modifier_item_orb_of_the_brine_bubble", { duration = self.bubble_duration } )
 
 		EmitSoundOn( "DOTA_Item.GhostScepter.Activate", self:GetCaster() )
 	end
@@ -42,6 +48,9 @@ function modifier_item_orb_of_the_brine:IsHidden()
 end
 function modifier_item_orb_of_the_brine:IsPurgable()
 	return false
+end
+function modifier_item_orb_of_the_brine:GetAttributes()
+	return MODIFIER_ATTRIBUTE_MULTIPLE
 end
 
 --------------------------------------------------------------------------------
@@ -107,6 +116,7 @@ end
 
 function modifier_item_orb_of_the_brine_bubble:OnCreated( kv )
 	self.bubble_heal_per_tick = self:GetAbility():GetSpecialValueFor( "bubble_heal_per_tick" )
+	self.bubble_mana_per_tick = self:GetAbility():GetSpecialValueFor( "bubble_mana_per_tick" )
 	self.heal_tick_interval = self:GetAbility():GetSpecialValueFor( "heal_tick_interval" )
 	self.bubble_move_speed = self:GetAbility():GetSpecialValueFor( "bubble_move_speed" )
 	if IsServer() then
@@ -123,6 +133,7 @@ end
 function modifier_item_orb_of_the_brine_bubble:OnIntervalThink()
 	if IsServer() then
 		self:GetParent():Heal( self.bubble_heal_per_tick, self:GetAbility() )
+		self:GetParent():GiveMana( self.bubble_mana_per_tick )
 	end
 end
 

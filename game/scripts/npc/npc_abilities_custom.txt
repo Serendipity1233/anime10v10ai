@@ -59,9 +59,9 @@
 		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_4"
 		"SpellDispellableType"			"SPELL_DISPELLABLE_NO"
 		"FightRecapLevel"				"2"
-		"AbilityCastPoint"				"0.5"
-		"AbilityCooldown"				"30.0 25.0 20.0 15.0 10.0"
-		"AbilityManaCost"				"175 275 375 475 575"
+		"AbilityCastPoint"				"0.6"
+		"AbilityCooldown"				"20.0"
+		"AbilityManaCost"				"200 275 350 425 500"
 		"HasScepterUpgrade"				"1"
 
 		// Casting
@@ -92,7 +92,7 @@
 			"03"
 			{
 				"var_type"	"FIELD_FLOAT"
-				"total_cast_time_tooltip"	"0.5"
+				"total_cast_time_tooltip"	"0.6"
 			}
 			"04"
 			{
@@ -655,7 +655,7 @@
 			"dragon_slave_width_end"		"150"
 			"dragon_slave_distance"			"1075"
 			"fixed_duration"			"1"
-			"damage"			"150 210 270 330 390"
+			"damage"				"120 180 240 300 360"
 			"damage_calne"			"320 400 480 560 640"
 			"shard_stun"			"2"
 		}
@@ -731,7 +731,7 @@
 		"SpellDispellableType"					"SPELL_DISPELLABLE_YES"
 
 		"AbilityCastPoint"						"0.3"
-		"AbilityCooldown"						"20 18 16 14 12"
+		"AbilityCooldown"						"20 19 18 17 16"
 		"AbilityManaCost"						"80 100 120 140 160"
 		"AbilityCastRange"						"900"
 
@@ -743,38 +743,13 @@
 		{
 		}
 
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"						"FIELD_FLOAT"
-				"radius"						"300"
-			}
-			"02"
-			{
-				"var_type"						"FIELD_FLOAT"
-				"damage"						"180 260 330 400 480"
-			}
-			"03"
-			{
-				"var_type"						"FIELD_FLOAT"
-				"range"							"900"
-			}
-			"04"
-			{
-				"var_type"						"FIELD_FLOAT"
-				"range_knockback"				"300"
-			}
-			"05"
-			{
-				"var_type"						"FIELD_FLOAT"
-				"speed"							"1600"
-			}
-			"06"
-			{
-				"var_type"						"FIELD_FLOAT"
-				"stun_duration"					"1.2 1.4 1.6 1.8 2.0"
-			}
+			"radius"						"300"
+			"range_knockback"				"300"
+			"speed"							"1600"
+			"damage"						"120 180 240 300 380"
+			"stun_duration"					"1.2 1.4 1.6 1.8 2.0"
 		}
 	}
 	"miku_dance"
@@ -805,7 +780,7 @@
 
 	    // Ability Casting
 	    //-------------------------------------------------------------------------------------------------------------
-	    "AbilityCastRange"				"700"
+	    "AbilityCastRange"				"600"
     	"AbilityCastPoint"				"0.3"
     	"AbilityChannelTime"			"120"
     	"AbilityCastAnimation"          "ACT_DOTA_CHANNEL_ABILITY_4"
@@ -813,7 +788,7 @@
     	// Ability Resource
     	//-------------------------------------------------------------------------------------------------------------
     	"AbilityCooldown"				"90"
-    	"AbilityManaCost"				"200"
+    	"AbilityManaCost"				"250"
 
     	// Damage
     	//-------------------------------------------------------------------------------------------------------------
@@ -830,7 +805,7 @@
 		    "02"
 		    {
 		    	"var_type"				"FIELD_INTEGER"
-		    	"dance_radius"			"700"
+		    	"dance_radius"			"600"
 		    }
 		    "03"
 		    {
@@ -840,12 +815,12 @@
 		    "04"
 	 	    {
 		    	"var_type"				"FIELD_INTEGER"
-		    	"dance_damage"			"600"
+		    	"dance_damage"			"450"
 		    }
     		"05"
 	    	{
 	    		"var_type"				"FIELD_FLOAT"
-		    	"stun_duration"			"1"
+		    	"stun_duration"			"1.2"
 		    }
     		"06"
 	    	{
@@ -870,9 +845,8 @@
 		"SpellDispellableType"					"SPELL_DISPELLABLE_NO"
 
 		"AbilityCastPoint"						"0.3"
-		//"AbilityChannelTime"					"5.0"
 		"AbilityCooldown"						"60"
-		"AbilityManaCost"						"250 400 550"
+		"AbilityManaCost"						"200 350 500"
 
 		"HasScepterUpgrade"						"0"
 
@@ -882,44 +856,15 @@
 
 
 		"AbilityCastAnimation"          "ACT_DOTA_IDLE"
-
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"						"FIELD_FLOAT"
-				"damage"						"80 120 160"
-			}
-			"02"
-			{
-				"var_type"						"FIELD_INTEGER"
-				"hp"	                        "2000 3000 4000"
-			}
-			"03"
-			{
-				"var_type"						"FIELD_FLOAT"
-				"agility"						"40 60 80"
-			}
-			"04"
-			{
-				"var_type"						"FIELD_FLOAT"
-				"radius"	"800"
-			}
-			"05"
-			{
-				"var_type"								"FIELD_FLOAT"
-				"as"	"150"
-			}
-			"06"
-			{
-				"var_type"						"FIELD_FLOAT"
-				"proc"				"400"
-			}
-			"10"
-			{
-				"var_type"						"FIELD_FLOAT"
-				"fixed_duration"				"30"
-			}
+			"hp"						"1600 2400 3200"
+			"damage"					"60 90 120"
+			"agility"					"40 60 80"
+			"radius"					"800"
+			"as"						"150"
+			"proc"						"400"
+			"fixed_duration"			"30"
 		}
 	}
 	"chibi_hit"
@@ -954,12 +899,12 @@
 		// Ability Resource
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCooldown"				"15"
-		"AbilityManaCost"				"300 400 500"
+		"AbilityManaCost"				"150 225 300"
 		"AbilityCastAnimation"          "ACT_DOTA_CAST_ABILITY_5"
 
 		// Damage
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityDamage"					"1000 1500 2000"
+		"AbilityDamage"					"600 1000 1400"
 
 		// Special
 		//-------------------------------------------------------------------------------------------------------------
@@ -990,7 +935,7 @@
     	//-------------------------------------------------------------------------------------------------------------
     	"BaseClass"						"ability_lua"
     	"ScriptFile"					"heroes/hero_miku/get_down"
-    	"AbilityTextureName"			"miku_6"
+    	"AbilityTextureName"			"hatsune_6"
     	"FightRecapLevel"				"1"
     	"MaxLevel"						"3"
 		"LevelsBetweenUpgrades"			"99"
@@ -1590,7 +1535,7 @@
 
 		// Ability Casting
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastPoint"				"2"
+		"AbilityCastPoint"				"1.6"
 		"AbilityChannelTime"			"2.0"
 
 		// Ability Resource
@@ -1828,5 +1773,115 @@
 		"BaseClass"					"special_bonus_undefined"
 		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityType"				"DOTA_ABILITY_TYPE_ATTRIBUTES"
+	}
+
+	//=================================================================================================================
+	// Tinker: Rearm 刷新
+	//=================================================================================================================
+	"tinker_rearm_lua"
+	{
+		// Ability Technical Aspect
+		// base script folder	: scripts/vscripts
+		// base texture folder	: resource/flash3/images/spellicons
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"lua_abilities/tinker_rearm_lua/tinker_rearm_lua"
+		"AbilityTextureName"			"tinker_rearm_lua"
+		"FightRecapLevel"				"2"
+		"MaxLevel"						"3"
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_tinker.vsndevts"
+			"particle"	"particles/units/heroes/hero_tinker/tinker_rearm.vpcf"
+		}
+
+		// Ability General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityType"					"DOTA_ABILITY_TYPE_ULTIMATE"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+
+		// Ability Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"				"0.53"
+		"AbilityChannelTime"			"3.5 2.5 1.5"
+		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_4"
+		"AbilityChannelAnimation"		"ACT_DOTA_CHANNEL_ABILITY_4"
+
+		// Ability Resource
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"0"
+		"AbilityManaCost"				"150 200 250"
+
+		// Damage
+		//-------------------------------------------------------------------------------------------------------------
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"channel_tooltip"			"3.5 2.5 1.5"
+			}
+		}
+	}
+	//=================================================================================================================
+    // Juggernaut 主宰/剑圣
+    //=================================================================================================================
+    "juggernaut_blade_dance"
+	{
+		"AbilityTextureName"			"jugg_blade_dance"
+	}
+	"juggernaut_blade_fury"
+	{
+		"AbilityTextureName"			"jugg_blade_fury"
+	}
+	"juggernaut_healing_ward"
+	{
+		"AbilityTextureName"			"jugg_healing_ward"
+	}
+	"juggernaut_omni_slash"
+	{
+		"AbilityTextureName"			"jugg_omni_slash"
+	}
+	"juggernaut_swift_slash"
+	{
+		"AbilityTextureName"			"jugg_swift_slash"
+	}
+	//=================================================================================================================
+	// Ability: Pangolier 石鳞剑士
+	//=================================================================================================================
+	"pangolier_swashbuckle"
+	{
+		"AbilityTextureName"			"pang_swashbuckle"
+	}
+	"pangolier_shield_crash"
+	{
+		"AbilityTextureName"			"pang_shield_crash"
+	}
+	"pangolier_heartpiercer"
+	{
+		"AbilityTextureName"			"pang_heartpiercer"
+	}
+	"pangolier_lucky_shot"
+	{
+		"AbilityTextureName"			"pang_lucky_shot"
+	}
+	"pangolier_gyroshell"
+	{
+		"AbilityTextureName"			"pang_gyroshell"
+	}
+	"pangolier_gyroshell_stop"
+	{
+		"AbilityTextureName"			"pang_gyroshell_stop"
+	}
+	"pangolier_rollup"
+	{
+		"AbilityTextureName"			"pang_rollup"
+	}
+	"pangolier_rollup_stop"
+	{
+		"AbilityTextureName"			"pang_rollup_stop"
 	}
 }
