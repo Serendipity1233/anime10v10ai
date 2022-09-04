@@ -510,7 +510,7 @@
 			"04"
 			{
 				"var_type"				"FIELD_FLOAT"
-				"duration"				"5.0"
+				"duration"				"5.5"
 			}
 			"05"
 			{
@@ -586,7 +586,7 @@
 				"aura_damage_illusions"	"80"
 				"upgrade_day_vision"	"250"
 				"evasion"				"20"
-				"blind_pct"				"15"
+				"blind_pct"				"20"
 				"aura_radius"			"700"
 		}
 	}
@@ -937,7 +937,7 @@
 
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------
-		"ItemCost"						"700"
+		"ItemCost"						"350"
 		"ItemShopTags"					""
 
 		// Recipe
@@ -946,7 +946,7 @@
 		"ItemResult"					"item_sphere_2"
 		"ItemRequirements"
 		{
-			"01"						"item_sphere;item_ultimate_orb;item_pers"
+			"01"						"item_sphere;item_pers"
 		}
 	}
 
@@ -966,7 +966,7 @@
 		"AbilityTextureName"			"item_sphere_2"
 
 		"AbilityCastRange"				"900"
-		"AbilityCooldown"				"4.0"
+		"AbilityCooldown"				"8.0"
 		"AbilitySharedCooldown"			"sphere"
 
 		// Special
@@ -976,7 +976,7 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_all_stats"		"35"
+				"bonus_all_stats"		"20"
 			}
 			"02"
 			{
@@ -991,7 +991,7 @@
 			"04"
 			{
 				"var_type"				"FIELD_FLOAT"
-				"block_cooldown"		"4.0"
+				"block_cooldown"		"8.0"
 			}
 		}
 	}
@@ -1027,7 +1027,8 @@
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"						"item_datadriven"
+		"BaseClass"						"item_lua"
+		"ScriptFile"                    "items/item_excalibur.lua"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ID"							"9048"
 		"AbilityTextureName"			"item_excalibur"
@@ -1035,35 +1036,10 @@
 		"ItemKillable"					"0"
 		"ItemSellable"					"0"
 
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bonus_damage"			"666"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bonus_damage_percent"	"100"
-			}
-		}
-		"Modifiers"
-		{
-
-			"modifier_item_excalibur"
-			{
-				"Passive"		"1"
-				"IsHidden"		"1"
-				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"			"%bonus_damage"
-					"MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE"	"%bonus_damage_percent"
-				}
-			}
+			"bonus_damage"			"666"
+			"bonus_damage_percent"	"100"
 		}
 	}
 
@@ -1255,7 +1231,7 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastRange"				"900"
 		"AbilityCastPoint"				"0.0"
-		"AbilityCooldown"				"20.0"
+		"AbilityCooldown"				"18.0"
 		"AbilitySharedCooldown"			"force"
 
 		// Item Info
@@ -1329,28 +1305,28 @@
 		}
 		"OnSpellStart"
 		{
-			"FireSound"
-			{
-				"EffectName"  "DOTA_Item.ForceStaff.Activate"
-				"Target"  "TARGET"
-			}
-			"ApplyModifier"
-			{
-				"ModifierName"  "modifier_item_force_staff_effect"
-				"Target"  "TARGET"
-			}
+			// "FireSound"
+			// {
+			// 	"EffectName"  "DOTA_Item.ForceStaff.Activate"
+			// 	"Target"  "TARGET"
+			// }
+			// "ApplyModifier"
+			// {
+			// 	"ModifierName"  "modifier_item_force_staff_effect"
+			// 	"Target"  "TARGET"
+			// }
 			"RunScript"
 			{
 				"ScriptFile"  "items/item_force_staff.lua"
-				"Function"  "ForceStaff"
-				"Target"  "TARGET"
+				"Function"	"ForceStaff"
+				"Target"	"TARGET"
 			}
 			"ApplyMotionController"
 			// For this: gfycat.com/BraveHideousGiantschnauzer -> check: bit.ly/1KWulqA
 			{
-					"Target"    "TARGET"
-					"ScriptFile"    "items/item_force_staff.lua"
-					"HorizontalControlFunction" "ForceHorizontal"
+				"Target"		"TARGET"
+				"ScriptFile"	"items/item_force_staff.lua"
+				"HorizontalControlFunction" "ForceHorizontal"
 			}
 		}
 		"Modifiers"
@@ -1528,28 +1504,28 @@
 		}
 		"OnSpellStart"
 		{
-			"FireSound"
-			{
-				"EffectName"  "DOTA_Item.ForceStaff.Activate"
-				"Target"  "TARGET"
-			}
-			"ApplyModifier"
-			{
-				"ModifierName"  "modifier_item_force_staff_effect"
-				"Target"  "TARGET"
-			}
+			// "FireSound"
+			// {
+			// 	"EffectName"  "DOTA_Item.ForceStaff.Activate"
+			// 	"Target"  "TARGET"
+			// }
+			// "ApplyModifier"
+			// {
+			// 	"ModifierName"  "modifier_item_force_staff_effect"
+			// 	"Target"  "TARGET"
+			// }
 			"RunScript"
 			{
 				"ScriptFile"  "items/item_force_staff.lua"
-				"Function"  "ForceStaff"
-				"Target"  "TARGET"
+				"Function"	"ForceStaff"
+				"Target"	"TARGET"
 			}
 			"ApplyMotionController"
 			// For this: gfycat.com/BraveHideousGiantschnauzer -> check: bit.ly/1KWulqA
 			{
-					"Target"    "TARGET"
-					"ScriptFile"    "items/item_force_staff.lua"
-					"HorizontalControlFunction" "ForceHorizontal"
+				"Target"		"TARGET"
+				"ScriptFile"	"items/item_force_staff.lua"
+				"HorizontalControlFunction" "ForceHorizontal"
 			}
 		}
 		"Modifiers"
@@ -2116,7 +2092,7 @@
 			"03"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"bonus_attack_range"		"170"
+				"bonus_attack_range"		"180"
 			}
 			"04"
 			{
@@ -2194,7 +2170,7 @@
 			"01"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"bonus_agility"	        	"45"
+				"bonus_agility"	        	"50"
 			}
 			"02"
 			{
@@ -2204,7 +2180,7 @@
 			"03"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"bonus_attack_range"		"200"
+				"bonus_attack_range"		"210"
 			}
 			"04"
 			{
@@ -2834,6 +2810,7 @@
 		// Stats
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCooldown"				"80"
+		"AbilityManaCost"				"100"
 
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------
@@ -2948,7 +2925,7 @@
 
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------
-		"ItemCost"						"3150"
+		"ItemCost"						"3850"
 		"ItemShopTags"					""
 
 		// Recipe
@@ -2971,7 +2948,7 @@
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"						"item_lua"
+		"BaseClass"						"item_trident"
 		"ID"							"3039"
 		"AbilityTextureName"			"item_sacred_trident"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -2981,7 +2958,6 @@
 		"ItemAliases"					"sacred trident"
 		"ItemDeclarations"				"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_IN_SPEECH | DECLARE_PURCHASES_TO_SPECTATORS"
 		"ShouldBeSuggested"				"1"
-		"ScriptFile"                    "items/item_sacred_trident.lua"
 
 		// Special
 		//-------------------------------------------------------------------------------------------------------------
@@ -2990,12 +2966,14 @@
 			"bonus_strength"		"33"
 			"bonus_agility"			"33"
 			"bonus_intellect"		"33"
-			"movement_speed_percent_bonus"				"12"
 			"status_resistance"		"20"
-			"spell_amp"				"18"
+			"bonus_attack_speed"	"20"
+			"movement_speed_percent_bonus"				"12"
 			"hp_regen_amp"			"18"
 			"spell_lifesteal_amp"	"18"
 			"mana_regen_multiplier"	"33"
+			"spell_amp"				"18"
+			"magic_damage_attack"	"33"
 		}
 	}
 
@@ -3033,7 +3011,7 @@
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"						"item_lua"
+		"BaseClass"						"item_trident"
 		"ID"							"3041"
 		"AbilityTextureName"			"item_sacred_six_vein"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -3043,7 +3021,6 @@
 		"ItemAliases"					"sacred six vein"
 		"ItemDeclarations"				"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_IN_SPEECH | DECLARE_PURCHASES_TO_SPECTATORS"
 		"ShouldBeSuggested"				"1"
-		"ScriptFile"                    "items/item_sacred_six_vein.lua"
 
 		// Special
 		//-------------------------------------------------------------------------------------------------------------
@@ -3052,17 +3029,19 @@
 			"bonus_strength"		"66"
 			"bonus_agility"			"66"
 			"bonus_intellect"		"66"
-			"movement_speed_percent_bonus"				"16"
 			"status_resistance"		"30"
-			"spell_amp"				"36"
+			"bonus_attack_speed"	"30"
+			"movement_speed_percent_bonus"				"18"
 			"hp_regen_amp"			"36"
 			"spell_lifesteal_amp"	"36"
 			"mana_regen_multiplier"	"66"
+			"spell_amp"				"36"
+			"magic_damage_attack"	"66"
 		}
 	}
 
 	//=================================================================================================================
-	// recipe yishan
+	// recipe yishan 一闪
 	//=================================================================================================================
 	"item_recipe_abyssal_blade_v2"
 	{
@@ -3112,88 +3091,38 @@
 		// Stats
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCooldown"				"20"
-		"AbilityCastRange"				"900"
+		"AbilityCastRange"				"600"
 		"AbilityCastPoint"				"0.0"
 
 
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"275"
-		"ItemCost"						"22750"
+		"AbilityManaCost"				"225"
+		"ItemCost"						"12800"
 		"ItemShopTags"					"damage;str;hard_to_tag"
 		"ItemQuality"					"epic"
 		"ItemAliases"					"abyssal blade"
 		"ItemDeclarations"				"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_IN_SPEECH | DECLARE_PURCHASES_TO_SPECTATORS"
 		"ShouldBeSuggested"				"1"
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
+
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bonus_damage"			"100"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bonus_strength"		"50"
-			}
-			"03"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"stun"					"1.2"
-			}
-			"04"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"ch_m"					"30"
-			}
-			"05"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"ch_r"					"15"
-			}
-			"06"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"dam"					"3"
-			}
-			"07"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"stun_m"				"2.4"
-			}
-			"08"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"block_chance"			"85"
-			}
-			"09"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"block_damage_melee"	"200"
-			}
-			"10"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"block_damage_ranged"	"100"
-			}
-			"11"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"damatt"				"240"
-			}
-			"12"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bonus_health"			"500"
-			}
-			"13"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bonus_health_regen"	"20"
-			}
+			"bonus_damage"			"100"
+			"bonus_strength"		"50"
+			"bonus_health"			"500"
+			"bonus_health_regen"	"20"
+			// active
+			"stun_m"				"2.4"
+			"active_damage_base"	"150"
+			"active_damage_multi"	"2"
+			// Passive
+			"stun"					"1.2"
+			"ch_m"					"30"
+			"ch_r"					"15"
+			"block_chance"			"85"
+			"block_damage_melee"	"200"
+			"block_damage_ranged"	"100"
+			"damatt"				"240"
 		}
 	}
 
@@ -3370,7 +3299,7 @@
 			"08"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_evasion"		    "10"
+				"bonus_evasion"		    "5"
 			}
 			"09"
 			{
@@ -3482,7 +3411,7 @@
 			"08"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_evasion"		    "20"
+				"bonus_evasion"		    "10"
 			}
 			"09"
 			{
@@ -3559,11 +3488,11 @@
 			"bonus_agility"			"70"
 			"bonus_strength"		"40"
 			"base_attack_range"		"250"
-			"push_length"			"1200"
-			"enemy_length"			"550"
+			"push_length"			"1000"
+			"enemy_length"			"500"
 			"range_duration"		"6"
 			"cast_range_enemy"		"800"
-			"max_attacks"			"10"
+			"max_attacks"			"12"
 			"bonus_attack_speed"	"200"
 		}
 	}
@@ -3612,7 +3541,7 @@
 		"AbilityUnitTargetFlags"				"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
 		"FightRecapLevel"						"1"
 
-		"AbilityCooldown"						"20.0"
+		"AbilityCooldown"						"18.0"
 		"AbilityCastRange"						"900"
 		"AbilityManaCost"						"300"
 		"AbilitySharedCooldown"			        "bluefantasy"
@@ -4491,7 +4420,7 @@
 			"04"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"aura_attack_speed"		"-80"
+				"aura_attack_speed"		"-70"
 			}
 			"05"
 			{
@@ -4872,7 +4801,7 @@
 			"bonus_agi_active"		"35"
 
 			"cast_pct_improvement"	"50"
-			"manacost_reduction"	"20"
+			"manacost_reduction"	"25"
 			"debuff_amp"			"20"
 			// Fall down effect
 			"base_damage"			"100"
@@ -5139,6 +5068,7 @@
 				"bonus_strength"		"50"
 				"bonus_damage"			"90"
 				"lifesteal_percent"		"50"
+				"creep_lifesteal_reduction_pct"	"80"
 				"unholy_lifesteal_percent"	"250"
 				"unholy_lifesteal_total_tooltip"	"300"
 				"unholy_duration"		"6.0"
@@ -5279,7 +5209,7 @@
 		"AbilityTextureName"			"item_recipe_orb_of_the_brine"
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------
-		"ItemCost"						"2950"
+		"ItemCost"						"3050"
 		"ItemShopTags"					""
 
 		// Recipe
@@ -5332,8 +5262,12 @@
 
 			"bubble_duration"		"3.0"
 			"bubble_move_speed"		"300"
-			"bubble_heal_per_tick"	"300"
+			"bubble_heal_per_tick"	"200"
+			"bubble_mana_per_tick"	"200"
 			"heal_tick_interval"	"0.5"
+
+			"bubble_total_heal_tip"	"1200"
+			"bubble_total_mana_tip"	"1200"
 		}
 	}
 
@@ -5452,6 +5386,7 @@
 			"bonus_intellect"		"80"
 			"bonus_mana_regen"		"12"
 			"spell_amp"				"18"
+			"mp_regen_amp"			"75"
 
 			"sheep_duration"		"4.0"
 			"sheep_movement_speed"	"120"
@@ -5483,7 +5418,7 @@
 		"ItemResult"					"item_armlet_plus"
 		"ItemRequirements"
 		{
-			"01"						"item_helm_of_iron_will;item_armlet;"
+			"01"						"item_helm_of_iron_will;item_armlet"
 		}
 	}
 	"item_armlet_plus"
@@ -5514,7 +5449,7 @@
 		{
 			"bonus_damage"			"25"
 			"bonus_attack_speed"	"35"
-			"bonus_armor"			"12"
+			"bonus_armor"			"9"
 			"bonus_health_regen"	"10"
 			"unholy_bonus_damage"	"45"
 			"unholy_bonus_attack_speed"	"15"
@@ -5547,7 +5482,7 @@
 		"ItemResult"					"item_armlet_pro_max"
 		"ItemRequirements"
 		{
-			"01"						"item_helm_of_iron_will;item_armlet_plus;"
+			"01"						"item_helm_of_iron_will;item_armlet_plus"
 		}
 	}
 	"item_armlet_pro_max"
@@ -5578,7 +5513,7 @@
 		{
 			"bonus_damage"			"35"
 			"bonus_attack_speed"	"45"
-			"bonus_armor"			"18"
+			"bonus_armor"			"12"
 			"bonus_health_regen"	"15"
 			"unholy_bonus_damage"	"55"
 			"unholy_bonus_attack_speed"	"30"
@@ -5586,6 +5521,195 @@
 			"unholy_bonus_armor"	"12"
 			"unholy_health_drain_per_second"	"5"
 			"toggle_cooldown"		"0.036f"
+		}
+	}
+	//=================================================================================================================
+	// White Lotus 圣女白莲
+	//=================================================================================================================
+	"item_recipe_saint_orb"
+	{
+		"BaseClass"	"item_datadriven"
+		"AbilityTextureName"	"item_recipe_saint_orb"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"ID"	"3091"
+		"Model"	"models/props_gameplay/recipe.vmdl"
+		// Item Info
+		// -------------------------------------------------------------------------------------------------------------
+		"ItemCost"	"350"
+		// Recipe
+		// -------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"	"1"
+		"ItemResult"	"item_saint_orb"
+		"ItemRequirements"
+		{
+			"01"	"item_lotus_orb;item_sphere_2"
+		}
+	}
+	"item_saint_orb"
+	{
+		"BaseClass"	"item_lua"
+		"AbilityTextureName"	"saint_orb"
+		"ScriptFile"	"items/item_saint_orb.lua"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityCastPoint"	"0.0"
+		"AbilityCooldown"	"16"
+		// Item Info
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"	"300"
+		// Stats
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"	"900"
+
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"ID"	"3092"
+		"ItemQuality"	"rare"
+		"ItemCost"	"0"
+		"ItemDeclarations"	"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_IN_SPEECH | DECLARE_PURCHASES_TO_SPECTATORS"
+		"ItemShopTags"	"armor"
+
+		"precache"
+		{
+			"particle"	"particles/units/heroes/hero_templar_assassin/templar_assassin_refraction.vpcf"
+			"particle"	"particles/units/heroes/hero_templar_assassin/templar_loadout.vpcf"
+		}
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityValues"
+		{
+			"bonus_armor"	"20"	//加甲
+			"bonus_mana"	"400"	//加蓝
+			"bonus_all_stats" "25"	//全属性
+			"hp_re"			"25"	//回血
+			"mana_re"		"16"	//回蓝
+			"heal_bonus"	"20"	//恢复增强
+			"duration"		"6"		//主动持续时间
+			"heal"			"5"		//反制回血%
+		}
+	}
+	//=================================================================================================================
+	// Diana Candy 嘉心糖
+	//=================================================================================================================
+	"item_candy_candy"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"3093"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_SUPPRESS_ASSOCIATED_CONSUMABLE"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+		"BaseClass"						"item_fusion_rune"
+		"AbilityTextureName"			"item_candy_candy"
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"6000"
+		"ItemAliases"					"diana candy"
+		"ItemPurchasable"				"1"
+		"ItemInitialCharges"			"2"
+		"ItemPermanent"					"0"
+		"ItemStockInitial"				"1"
+		"ItemStockMax"					"2"
+		"ItemStockTime"					"300.0"
+
+		// Stats
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"120.0"
+
+		// Stats
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"250"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"duration"				"60"
+			}
+		}
+	}
+	//=================================================================================================================
+	// 团队之手卷轴
+	//=================================================================================================================
+	"item_recipe_hand_of_group"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"3094"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"Model"							"models/props_gameplay/recipe.vmdl"
+		"BaseClass"						"item_recipe_hand_of_midas"
+		"AbilityTextureName"					"item_recipe_hand_of_group"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"600"
+		"ItemShopTags"					""
+		"ItemAliases"					"hom"
+
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"					"1"
+		"ItemResult"					"item_hand_of_group"
+		"ItemRequirements"
+		{
+			"01"						"item_hand_of_midas;item_hyperstone"
+		}
+	}
+
+	//=================================================================================================================
+	// 团队之手
+	//=================================================================================================================
+	"item_hand_of_group"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"3095"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_CREEP"
+		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_NOT_ANCIENTS | DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+		"AbilityCastRange"				"600"
+		"AbilityCastPoint"				"0.0"
+		"AbilityCooldown"				"90.0"
+
+		"BaseClass"						"item_lua"
+		"ScriptFile"					"items/item_hand_of_group.lua"
+
+		"AbilityTextureName"			"item_hand_of_group"
+		"AbilitySharedCooldown"			"item_hand_of_midas"
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"0"
+		"ItemCost"						"4800"
+		"ItemShopTags"					"attack_speed;hard_to_tag"
+		"ItemQuality"					"common"
+		"ItemAliases"					"hand of group"
+		"ItemDeclarations"				"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_TO_SPECTATORS"
+		"ShouldBeSuggested"				"1"
+		"precache"
+		{
+			"particle"	"particles/items2_fx/hand_of_midas.vpcf"
+		}
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityValues"
+		{
+			"attack_speed"		"80"
+			"self_xp"			"4.6"
+			"self_gold"			"420"
+
+			"group_range"		"1800"
+			"group_xp"			"0.8"
+			"group_gold"		"80"
 		}
 	}
 }

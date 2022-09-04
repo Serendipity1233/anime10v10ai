@@ -12,6 +12,7 @@ require('util')
 require('settings')
 require('bot/bot_item_data')
 require('events')
+require('lottery/items')
 require('bot/bot_think_item_build')
 require('bot/bot_think_item_use')
 require('bot/bot_think_ability_use')
@@ -73,13 +74,17 @@ function AIGameMode:InitEvents()
 	ListenToGameEvent("dota_player_gained_level", Dynamic_Wrap(AIGameMode, "OnPlayerLevelUp"), self)
 	ListenToGameEvent("npc_spawned", Dynamic_Wrap(AIGameMode, "OnNPCSpawned"), self)
 	ListenToGameEvent("entity_killed", Dynamic_Wrap(AIGameMode, "OnEntityKilled"), self)
-	ListenToGameEvent( "dota_item_picked_up", Dynamic_Wrap( AIGameMode, "OnItemPickedUp" ), self )
-	ListenToGameEvent( "player_chat", Dynamic_Wrap( AIGameMode, "OnPlayerChat" ), self )
+	ListenToGameEvent("dota_item_picked_up", Dynamic_Wrap( AIGameMode, "OnItemPickedUp" ), self )
+	ListenToGameEvent("player_chat", Dynamic_Wrap( AIGameMode, "OnPlayerChat" ), self )
+	ListenToGameEvent("player_reconnected", Dynamic_Wrap(AIGameMode, 'OnPlayerReconnect'), self)
 	--JS events
 	CustomGameEventManager:RegisterListener("loading_set_options", function (eventSourceIndex, args) return AIGameMode:OnGetLoadingSetOptions(eventSourceIndex, args) end)
 	-- 游戏选项改变事件
 	CustomGameEventManager:RegisterListener("game_options_change", function(_, keys) return AIGameMode:OnGameOptionChange(keys) end)
-
+	-- 共享单位，禁用帮助
+	CustomGameEventManager:RegisterListener("set_unit_share_mask", function(_, keys) return AIGameMode:SetUnitShareMask(keys) end)
+	-- 选择道具
+	CustomGameEventManager:RegisterListener("item_choice_made", Dynamic_Wrap(AIGameMode, "FinishItemPick"))
 end
 
 
@@ -221,14 +226,14 @@ function AIGameMode:PreGameOptions()
 
 	self.roshanNumber = 0
 
-	if self.fBotGoldXpMultiplier < 5 then
-		self.botPushMin = RandomInt(14, 18)
+	if self.fBotGoldXpMultiplier <= 3 then
+		self.botPushMin = RandomInt(15, 18)
 	elseif self.fBotGoldXpMultiplier <= 5 then
-		self.botPushMin = RandomInt(11, 14)
+		self.botPushMin = RandomInt(12, 15)
 	elseif self.fBotGoldXpMultiplier <= 8 then
-		self.botPushMin = RandomInt(8, 11)
+		self.botPushMin = RandomInt(10, 12)
 	else
-		self.botPushMin = RandomInt(6, 9)
+		self.botPushMin = RandomInt(8, 10)
 	end
 
 	print("botPushMin: "..self.botPushMin)
@@ -247,12 +252,12 @@ function AIGameMode:FilterGold(tGoldFilter)
 	local iReason = tGoldFilter["reason_const"]
 
 	if iReason == DOTA_ModifyGold_HeroKill then
-		if iGold > 4000 then
-			iGold = 1000
-		elseif iGold > 1600 then
-			iGold = iGold/8 + 500
-		elseif iGold > 800 then
-			iGold = iGold/4 + 300
+		if iGold > 6000 then
+			iGold = 1400
+		elseif iGold > 2000 then
+			iGold = iGold/8 + 650
+		elseif iGold > 1200 then
+			iGold = iGold/4 + 400
 		elseif iGold > 200 then
 			iGold = iGold/2 + 100
 		else

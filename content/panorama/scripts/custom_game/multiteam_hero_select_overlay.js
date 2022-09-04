@@ -1,12 +1,12 @@
 "use strict";
-
 var imagefile = {
-	'npc_dota_hero_meepo': 'file://{resources}/images/heroes/npc_dota_hero_meepo_custom.png',
-	'npc_dota_hero_juggernaut': 'file://{resources}/images/heroes/npc_dota_hero_juggernaut_custom.png',
-	'npc_dota_hero_techies': 'file://{resources}/images/heroes/npc_dota_hero_techies_custom.png',
-	'npc_dota_hero_broodmother': 'file://{resources}/images/heroes/npc_dota_hero_broodmother_custom.png',
-	'npc_dota_hero_visage': 'file://{resources}/images/heroes/npc_dota_hero_visage_custom.png',
-	'npc_dota_hero_chen': 'file://{resources}/images/heroes/npc_dota_hero_chen_custom.png',
+	'npc_dota_hero_meepo': 'file://{images}/heroes/npc_dota_hero_meepo_custom.png',
+	'npc_dota_hero_juggernaut': 'file://{images}/heroes/npc_dota_hero_juggernaut_custom.png',
+	'npc_dota_hero_techies': 'file://{images}/heroes/npc_dota_hero_techies_custom.png',
+	'npc_dota_hero_broodmother': 'file://{images}/heroes/npc_dota_hero_broodmother_custom.png',
+	'npc_dota_hero_visage': 'file://{images}/heroes/npc_dota_hero_visage_custom.png',
+	'npc_dota_hero_chen': 'file://{images}/heroes/npc_dota_hero_chen_custom.png',
+	'npc_dota_hero_pangolier': 'file://{images}/heroes/npc_dota_hero_pangolier_custom.png',
 }
 
 function OnUpdateHeroSelection()
@@ -117,7 +117,8 @@ function UpdateTimer()
 
 (function()
 {
-	var bLargeGame = Game.GetAllPlayerIDs().length >= 12;
+	// var bLargeGame = Game.GetAllPlayerIDs().length >= 12;
+	var bLargeGame = true;
 
 	var localPlayerTeamId = Game.GetLocalPlayerInfo().player_team_id;
 	var first = true;
@@ -131,7 +132,6 @@ function UpdateTimer()
 
 	var nTeamsCreated = 0;
 	var nTeams = Game.GetAllTeamIDs().length
-	$.Msg( nTeams );
 	for ( var teamId of Game.GetAllTeamIDs() )
 	{
 		var teamPanelToUse = null;
@@ -142,7 +142,6 @@ function UpdateTimer()
 		else
 		{
 			teamPanelToUse = teamsContainer;
-
 		}
 
 		$.CreatePanel( "Panel", teamPanelToUse, "Spacer" );
